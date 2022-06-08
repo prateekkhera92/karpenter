@@ -332,8 +332,7 @@ func (p *InstanceProvider) filterInstanceTypes(instanceTypes []cloudprovider.Ins
 		itRes := it.Resources()
 		if !resources.IsZero(itRes[v1alpha1.ResourceAWSNeuron]) ||
 			!resources.IsZero(itRes[v1alpha1.ResourceAMDGPU]) ||
-			!resources.IsZero(itRes[v1alpha1.ResourceNVIDIAGPU]) ||
-			!resources.IsZero(itRes[v1alpha1.ResourceSmarterDevicesFuse]) {
+			!resources.IsZero(itRes[v1alpha1.ResourceNVIDIAGPU]) {
 			continue
 		}
 		genericInstanceTypes = append(genericInstanceTypes, it)
