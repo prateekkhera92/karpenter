@@ -19,6 +19,7 @@ import (
 	"k8s.io/apimachinery/pkg/api/resource"
 
 	"github.com/aws/karpenter/pkg/utils/pretty"
+	"fmt"
 )
 
 // RequestsForPods returns the total resources of a variadic list of podspecs.
@@ -27,6 +28,10 @@ func RequestsForPods(pods ...*v1.Pod) v1.ResourceList {
 	for _, pod := range pods {
 		resources = append(resources, Ceiling(pod).Requests)
 	}
+	fmt.Println(resources)
+	delete(resources[0],"smarter-devices/fuse");
+	fmt.Println(resources)
+	fmt.Println(pods)
 	merged := Merge(resources...)
 	merged[v1.ResourcePods] = *resource.NewQuantity(int64(len(pods)), resource.DecimalExponent)
 	return merged
@@ -38,6 +43,10 @@ func LimitsForPods(pods ...*v1.Pod) v1.ResourceList {
 	for _, pod := range pods {
 		resources = append(resources, Ceiling(pod).Limits)
 	}
+	fmt.Println(resources)
+	delete(resources[0],"smarter-devices/fuse");
+	fmt.Println(resources)
+	fmt.Println(pods)
 	merged := Merge(resources...)
 	merged[v1.ResourcePods] = *resource.NewQuantity(int64(len(pods)), resource.DecimalExponent)
 	return merged
