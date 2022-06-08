@@ -131,6 +131,8 @@ func compatible(instanceType cloudprovider.InstanceType, requirements scheduling
 }
 
 func fits(instanceType cloudprovider.InstanceType, requests v1.ResourceList) bool {
+	fmt.Println(resources.Merge(requests, instanceType.Overhead()))
+	fmt.Println(instanceType.Resources())
 	return resources.Fits(resources.Merge(requests, instanceType.Overhead()), instanceType.Resources())
 }
 
