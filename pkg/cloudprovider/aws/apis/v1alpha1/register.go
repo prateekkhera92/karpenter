@@ -55,6 +55,7 @@ var (
 	ResourceAMDGPU    v1.ResourceName = "amd.com/gpu"
 	ResourceAWSNeuron v1.ResourceName = "aws.amazon.com/neuron"
 	ResourceAWSPodENI v1.ResourceName = "vpc.amazonaws.com/pod-eni"
+	ResourceSmarterDevicesFuse v1.ResourceName = "smarter-devices/fuse"
 
 	InstanceFamilyLabelKey          = LabelDomain + "/instance.family"
 	InstanceSizeLabelKey            = LabelDomain + "/instance.size"

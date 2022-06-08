@@ -164,6 +164,7 @@ func (i *InstanceType) computeResources(enablePodENI bool) v1.ResourceList {
 		v1alpha1.ResourceNVIDIAGPU:  i.nvidiaGPUs(),
 		v1alpha1.ResourceAMDGPU:     i.amdGPUs(),
 		v1alpha1.ResourceAWSNeuron:  i.awsNeurons(),
+		v1alpha1.ResourceSmarterDevicesFuse:  i.smarterDevicesFuse(),
 	}
 }
 
@@ -219,6 +220,11 @@ func (i *InstanceType) nvidiaGPUs() resource.Quantity {
 		}
 	}
 	return *resources.Quantity(fmt.Sprint(count))
+}
+
+func (i *InstanceType) smarterDevicesFuse() resource.Quantity {
+	count := int64(1)
+	return *resources.Quantity(fmt.Sprint(count)) 
 }
 
 func (i *InstanceType) amdGPUs() resource.Quantity {
